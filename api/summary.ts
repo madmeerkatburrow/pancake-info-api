@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
+import { Request, Response } from "express";
 import { getAddress } from "@ethersproject/address";
 import { getTopPairs } from "../utils";
 import { return200, return500 } from "../utils/response";
@@ -9,11 +9,11 @@ interface ReturnShape {
     base_volume: string;
     quote_volume: string;
     liquidity: string;
-    liquidity_BNB: string;
+    liquidity_CRO: string;
   };
 }
 
-export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
+export default async function (req: Request, res: Response): Promise<void> {
   try {
     const topPairs = await getTopPairs();
 
@@ -26,7 +26,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
         base_volume: pair.volumeToken0,
         quote_volume: pair.volumeToken1,
         liquidity: pair.reserveUSD,
-        liquidity_BNB: pair.reserveBNB,
+        liquidity_CRO: pair.reserveCRO,
       };
 
       return accumulator;
@@ -34,6 +34,6 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
 
     return200(res, { updated_at: new Date().getTime(), data: pairs });
   } catch (error) {
-    return500(res, error);
+    return500(res, <Error>error);
   }
 }

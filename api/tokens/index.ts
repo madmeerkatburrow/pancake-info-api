@@ -8,7 +8,7 @@ interface ReturnShape {
     name: string;
     symbol: string;
     price: string;
-    price_BNB: string;
+    price_CRO: string;
   };
 }
 
@@ -24,7 +24,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
           name: token.name,
           symbol: token.symbol,
           price: token.derivedUSD,
-          price_BNB: token.derivedBNB,
+          price_CRO: token.derivedCRO,
         };
       }
 
@@ -33,6 +33,6 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
 
     return200(res, { updated_at: new Date().getTime(), data: tokens });
   } catch (error) {
-    return500(res, error);
+    return500(res, <Error>error);
   }
 }

@@ -92,13 +92,13 @@ export interface Pair {
   readonly id: Scalars['ID'];
   readonly reserve0: Scalars['BigDecimal'];
   readonly reserve1: Scalars['BigDecimal'];
-  readonly reserveBNB: Scalars['BigDecimal'];
+  readonly reserveCRO: Scalars['BigDecimal'];
   readonly reserveUSD: Scalars['BigDecimal'];
   readonly token0: Token;
   readonly token0Price: Scalars['BigDecimal'];
   readonly token1: Token;
   readonly token1Price: Scalars['BigDecimal'];
-  readonly trackedReserveBNB: Scalars['BigDecimal'];
+  readonly trackedreserveCRO: Scalars['BigDecimal'];
   readonly trackedReserveUSD: Scalars['BigDecimal'];
   readonly untrackedVolumeBNB: Scalars['BigDecimal'];
   readonly untrackedVolumeUSD: Scalars['BigDecimal'];
@@ -193,14 +193,14 @@ export interface Pair_Filter {
   readonly reserve1_lte?: Maybe<Scalars['BigDecimal']>;
   readonly reserve1_not?: Maybe<Scalars['BigDecimal']>;
   readonly reserve1_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
-  readonly reserveBNB?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_gt?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_gte?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
-  readonly reserveBNB_lt?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_lte?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_not?: Maybe<Scalars['BigDecimal']>;
-  readonly reserveBNB_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly reserveCRO?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_gt?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_gte?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly reserveCRO_lt?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_lte?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_not?: Maybe<Scalars['BigDecimal']>;
+  readonly reserveCRO_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
   readonly reserveUSD?: Maybe<Scalars['BigDecimal']>;
   readonly reserveUSD_gt?: Maybe<Scalars['BigDecimal']>;
   readonly reserveUSD_gte?: Maybe<Scalars['BigDecimal']>;
@@ -253,14 +253,14 @@ export interface Pair_Filter {
   readonly token1_not_in?: Maybe<ReadonlyArray<Scalars['String']>>;
   readonly token1_not_starts_with?: Maybe<Scalars['String']>;
   readonly token1_starts_with?: Maybe<Scalars['String']>;
-  readonly trackedReserveBNB?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_gt?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_gte?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
-  readonly trackedReserveBNB_lt?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_lte?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_not?: Maybe<Scalars['BigDecimal']>;
-  readonly trackedReserveBNB_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly trackedreserveCRO?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_gt?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_gte?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly trackedreserveCRO_lt?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_lte?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_not?: Maybe<Scalars['BigDecimal']>;
+  readonly trackedreserveCRO_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
   readonly trackedReserveUSD?: Maybe<Scalars['BigDecimal']>;
   readonly trackedReserveUSD_gt?: Maybe<Scalars['BigDecimal']>;
   readonly trackedReserveUSD_gte?: Maybe<Scalars['BigDecimal']>;
@@ -323,13 +323,13 @@ export enum Pair_OrderBy {
   Id = 'id',
   Reserve0 = 'reserve0',
   Reserve1 = 'reserve1',
-  ReserveBnb = 'reserveBNB',
+  ReserveCro = 'reserveCRO',
   ReserveUsd = 'reserveUSD',
   Token0 = 'token0',
   Token0Price = 'token0Price',
   Token1 = 'token1',
   Token1Price = 'token1Price',
-  TrackedReserveBnb = 'trackedReserveBNB',
+  TrackedreserveCro = 'trackedreserveCRO',
   TrackedReserveUsd = 'trackedReserveUSD',
   UntrackedVolumeBnb = 'untrackedVolumeBNB',
   UntrackedVolumeUsd = 'untrackedVolumeUSD',
@@ -544,7 +544,7 @@ export interface SubscriptionTokensArgs {
 export interface Token {
   readonly __typename?: 'Token';
   readonly decimals: Scalars['BigInt'];
-  readonly derivedBNB: Scalars['BigDecimal'];
+  readonly derivedCRO: Scalars['BigDecimal'];
   readonly derivedUSD: Scalars['BigDecimal'];
   readonly id: Scalars['ID'];
   readonly name: Scalars['String'];
@@ -560,14 +560,14 @@ export interface Token_Filter {
   readonly decimals_lte?: Maybe<Scalars['BigInt']>;
   readonly decimals_not?: Maybe<Scalars['BigInt']>;
   readonly decimals_not_in?: Maybe<ReadonlyArray<Scalars['BigInt']>>;
-  readonly derivedBNB?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_gt?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_gte?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
-  readonly derivedBNB_lt?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_lte?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_not?: Maybe<Scalars['BigDecimal']>;
-  readonly derivedBNB_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly derivedCRO?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_gt?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_gte?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
+  readonly derivedCRO_lt?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_lte?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_not?: Maybe<Scalars['BigDecimal']>;
+  readonly derivedCRO_not_in?: Maybe<ReadonlyArray<Scalars['BigDecimal']>>;
   readonly derivedUSD?: Maybe<Scalars['BigDecimal']>;
   readonly derivedUSD_gt?: Maybe<Scalars['BigDecimal']>;
   readonly derivedUSD_gte?: Maybe<Scalars['BigDecimal']>;
@@ -616,7 +616,7 @@ export interface Token_Filter {
 
 export enum Token_OrderBy {
   Decimals = 'decimals',
-  DerivedBnb = 'derivedBNB',
+  DerivedCro = 'derivedCRO',
   DerivedUsd = 'derivedUSD',
   Id = 'id',
   Name = 'name',
@@ -678,13 +678,13 @@ export type TokenQuery = (
   { readonly __typename?: 'Query' }
   & { readonly token?: Maybe<(
     { readonly __typename?: 'Token' }
-    & Pick<Token, 'id' | 'name' | 'symbol' | 'derivedBNB' | 'derivedUSD'>
+    & Pick<Token, 'id' | 'name' | 'symbol' | 'derivedCRO' | 'derivedUSD'>
   )> }
 );
 
 export type TokenInfoFragment = (
   { readonly __typename?: 'Token' }
-  & Pick<Token, 'id' | 'name' | 'symbol' | 'derivedBNB' | 'derivedUSD'>
+  & Pick<Token, 'id' | 'name' | 'symbol' | 'derivedCRO' | 'derivedUSD'>
 );
 
 export type TopPairsQueryVariables = Exact<{
@@ -697,7 +697,7 @@ export type TopPairsQuery = (
   { readonly __typename?: 'Query' }
   & { readonly pairs: ReadonlyArray<(
     { readonly __typename?: 'Pair' }
-    & Pick<Pair, 'id' | 'reserve0' | 'reserve1' | 'volumeToken0' | 'volumeToken1' | 'reserveBNB' | 'reserveUSD'>
+    & Pick<Pair, 'id' | 'reserve0' | 'reserve1' | 'volumeToken0' | 'volumeToken1' | 'reserveCRO' | 'reserveUSD'>
     & { readonly token0: (
       { readonly __typename?: 'Token' }
       & TokenInfoFragment

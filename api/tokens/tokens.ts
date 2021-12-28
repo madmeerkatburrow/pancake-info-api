@@ -23,10 +23,10 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
         name: token?.name,
         symbol: token?.symbol,
         price: token?.derivedUSD,
-        price_BNB: token?.derivedBNB,
+        price_CRO: token?.derivedCRO,
       },
     });
   } catch (error) {
-    return500(res, error);
+    return500(res, <Error>error);
   }
 }

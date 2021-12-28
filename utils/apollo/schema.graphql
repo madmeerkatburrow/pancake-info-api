@@ -19,13 +19,13 @@ type Pair {
     id: ID!
     reserve0: BigDecimal!
     reserve1: BigDecimal!
-    reserveBNB: BigDecimal!
+    reserveCRO: BigDecimal!
     reserveUSD: BigDecimal!
     token0: Token!
     token0Price: BigDecimal!
     token1: Token!
     token1Price: BigDecimal!
-    trackedReserveBNB: BigDecimal!
+    trackedreserveCRO: BigDecimal!
     trackedReserveUSD: BigDecimal!
     untrackedVolumeBNB: BigDecimal!
     untrackedVolumeUSD: BigDecimal!
@@ -194,7 +194,7 @@ type Subscription {
 
 type Token {
     decimals: BigInt!
-    derivedBNB: BigDecimal!
+    derivedCRO: BigDecimal!
     derivedUSD: BigDecimal!
     id: ID!
     name: String!
@@ -250,13 +250,13 @@ enum Pair_orderBy {
     id
     reserve0
     reserve1
-    reserveBNB
+    reserveCRO
     reserveUSD
     token0
     token0Price
     token1
     token1Price
-    trackedReserveBNB
+    trackedreserveCRO
     trackedReserveUSD
     untrackedVolumeBNB
     untrackedVolumeUSD
@@ -268,7 +268,7 @@ enum Pair_orderBy {
 
 enum Token_orderBy {
     decimals
-    derivedBNB
+    derivedCRO
     derivedUSD
     id
     name
@@ -395,14 +395,14 @@ input Pair_filter {
     reserve1_lte: BigDecimal
     reserve1_not: BigDecimal
     reserve1_not_in: [BigDecimal!]
-    reserveBNB: BigDecimal
-    reserveBNB_gt: BigDecimal
-    reserveBNB_gte: BigDecimal
-    reserveBNB_in: [BigDecimal!]
-    reserveBNB_lt: BigDecimal
-    reserveBNB_lte: BigDecimal
-    reserveBNB_not: BigDecimal
-    reserveBNB_not_in: [BigDecimal!]
+    reserveCRO: BigDecimal
+    reserveCRO_gt: BigDecimal
+    reserveCRO_gte: BigDecimal
+    reserveCRO_in: [BigDecimal!]
+    reserveCRO_lt: BigDecimal
+    reserveCRO_lte: BigDecimal
+    reserveCRO_not: BigDecimal
+    reserveCRO_not_in: [BigDecimal!]
     reserveUSD: BigDecimal
     reserveUSD_gt: BigDecimal
     reserveUSD_gte: BigDecimal
@@ -455,14 +455,14 @@ input Pair_filter {
     token1_not_in: [String!]
     token1_not_starts_with: String
     token1_starts_with: String
-    trackedReserveBNB: BigDecimal
-    trackedReserveBNB_gt: BigDecimal
-    trackedReserveBNB_gte: BigDecimal
-    trackedReserveBNB_in: [BigDecimal!]
-    trackedReserveBNB_lt: BigDecimal
-    trackedReserveBNB_lte: BigDecimal
-    trackedReserveBNB_not: BigDecimal
-    trackedReserveBNB_not_in: [BigDecimal!]
+    trackedreserveCRO: BigDecimal
+    trackedreserveCRO_gt: BigDecimal
+    trackedreserveCRO_gte: BigDecimal
+    trackedreserveCRO_in: [BigDecimal!]
+    trackedreserveCRO_lt: BigDecimal
+    trackedreserveCRO_lte: BigDecimal
+    trackedreserveCRO_not: BigDecimal
+    trackedreserveCRO_not_in: [BigDecimal!]
     trackedReserveUSD: BigDecimal
     trackedReserveUSD_gt: BigDecimal
     trackedReserveUSD_gte: BigDecimal
@@ -530,14 +530,14 @@ input Token_filter {
     decimals_lte: BigInt
     decimals_not: BigInt
     decimals_not_in: [BigInt!]
-    derivedBNB: BigDecimal
-    derivedBNB_gt: BigDecimal
-    derivedBNB_gte: BigDecimal
-    derivedBNB_in: [BigDecimal!]
-    derivedBNB_lt: BigDecimal
-    derivedBNB_lte: BigDecimal
-    derivedBNB_not: BigDecimal
-    derivedBNB_not_in: [BigDecimal!]
+    derivedCRO: BigDecimal
+    derivedCRO_gt: BigDecimal
+    derivedCRO_gte: BigDecimal
+    derivedCRO_in: [BigDecimal!]
+    derivedCRO_lt: BigDecimal
+    derivedCRO_lte: BigDecimal
+    derivedCRO_not: BigDecimal
+    derivedCRO_not_in: [BigDecimal!]
     derivedUSD: BigDecimal
     derivedUSD_gt: BigDecimal
     derivedUSD_gte: BigDecimal
