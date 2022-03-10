@@ -74,8 +74,8 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     }
 
     // Get total supply and substract the burned
-    const totalSupply = new BigNumber((await allTokens[token].totalSupply()).toString());
-    const response = await Promise.all(allTokens[token].burned.map((x: string) => allTokens[token].balanceOf(x)));
+    const totalSupply = new BigNumber((await allTokens[token].contract.totalSupply()).toString());
+    const response = await Promise.all(allTokens[token].burned.map((x: string) => allTokens[token].contract.balanceOf(x)));
     let burned = new BigNumber(0);
     response.forEach((x) => {
       const temp = new BigNumber(x.toString());
