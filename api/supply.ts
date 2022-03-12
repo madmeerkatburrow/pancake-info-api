@@ -124,7 +124,10 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       lastUpdated: Date.now(),
     };
     
-    priceData[token] = { ...value };
+    priceData[token] = {
+      ...value, extra: totalSupply.minus(burned).toString(),
+      burned2: burned.toString(),
+    };
 
     return200(res, value);
   } catch (error) {
