@@ -101,7 +101,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     const token = (req.query.token as string) || "MMF";
 
     if (
-      Date.now() < priceData[token].lastUpdated + 10 * 60 * 1000 &&
+      Date.now() < priceData[token].lastUpdated + 2 * 60 * 1000 &&
       priceData[token].totalSupply
     ) {
       return200(res, {
@@ -112,11 +112,11 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
 
     // Get total supply and substract the burned
     const totalSupply = new BigNumber((await allTokens[token].contract.totalSupply()).toString());
-    const response = await Promise.all(
+    const allBurned = await Promise.all(
       allTokens[token].burned.map((x: string) => allTokens[token].contract.balanceOf(x))
     );
     let burned = new BigNumber(0);
-    response.forEach((x) => {
+    allBurned.forEach((x) => {
       const temp = new BigNumber(x.toString());
       burned = burned.plus(temp);
     });
