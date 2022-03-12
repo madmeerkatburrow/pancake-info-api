@@ -101,7 +101,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     const token = (req.query.token as string) || "MMF";
 
     if (
-      Date.now() < priceData[token].lastUpdated + 2 * 60 * 1000 &&
+      Date.now() < priceData[token].lastUpdated + 3 * 60 * 1000 &&
       priceData[token].totalSupply
     ) {
       return200(res, priceData[token]);
@@ -122,8 +122,6 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       totalSupply: totalSupply.minus(burned).div(allTokens[token].decimals).toString(),
       burned: burned.div(allTokens[token].decimals).toString(),
       lastUpdated: Date.now(),
-      extra: totalSupply.minus(burned).toString(),
-      burned2: burned.toString(),
     };
     
     priceData[token] = {
