@@ -122,11 +122,12 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       totalSupply: totalSupply.minus(burned).div(allTokens[token].decimals).toString(),
       burned: burned.div(allTokens[token].decimals).toString(),
       lastUpdated: Date.now(),
+      extra: totalSupply.minus(burned).toString(),
+      burned2: burned.toString(),
     };
     
     priceData[token] = {
-      ...value, extra: totalSupply.minus(burned).toString(),
-      burned2: burned.toString(),
+      ...value, 
     };
 
     return200(res, value);
