@@ -104,33 +104,29 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       Date.now() < priceData[token].lastUpdated + 2 * 60 * 1000 &&
       priceData[token].totalSupply
     ) {
-      return200(res, {
-        totalSupply: priceData[token].totalSupply,
-        burned: priceData[token].burned,
-      });
+      return200(res, priceData[token]);
     }
 
     // Get total supply and substract the burned
     const totalSupply = new BigNumber((await allTokens[token].contract.totalSupply()).toString());
+    let burned = new BigNumber(0);
     const allBurned = await Promise.all(
       allTokens[token].burned.map((x: string) => allTokens[token].contract.balanceOf(x))
     );
-    let burned = new BigNumber(0);
     allBurned.forEach((x) => {
       const temp = new BigNumber(x.toString());
       burned = burned.plus(temp);
     });
 
-    priceData[token] = {
+    const value = {
       totalSupply: totalSupply.minus(burned).div(allTokens[token].decimals).toString(),
       burned: burned.div(allTokens[token].decimals).toString(),
       lastUpdated: Date.now(),
     };
+    
+    priceData[token] = { ...value };
 
-    return200(res, {
-      totalSupply: totalSupply.minus(burned).div(allTokens[token].decimals).toString(),
-      burned: burned.div(allTokens[token].decimals).toString(),
-    });
+    return200(res, value);
   } catch (error) {
     return500(res, <Error>error);
   }
