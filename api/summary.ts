@@ -15,7 +15,7 @@ interface ReturnShape {
 
 const lastUpdated = Date.now();
 let updating = false
-const localPairs = {};
+let localPairs = {};
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
     if (Object.keys(localPairs).length > 0 && (Date.now() < lastUpdated + 5 * 60 * 1000 || updating)) {
@@ -25,7 +25,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     updating = true; // because single request take a long time
     const topPairs = await getTopPairs();
 
-    const pairs = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
+    localPairs = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
       const t0Id = getAddress(pair.token0.id);
       const t1Id = getAddress(pair.token1.id);
 
@@ -39,9 +39,10 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
 
       return accumulator;
     }, {});
+
     updating = false;
 
-    return200(res, { updated_at: new Date().getTime(), data: pairs });
+    return200(res, { updated_at: new Date().getTime(), data: localPairs });
   } catch (error) {
     return500(res, <Error>error);
   }
