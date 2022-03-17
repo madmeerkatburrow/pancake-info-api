@@ -18,7 +18,7 @@ let updating = false
 const localPairs = {};
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
-    if (Object.keys(localPairs).length > 0 && (Date.now() < lastUpdated + 3 * 60 * 1000 || updating)) {
+    if (Object.keys(localPairs).length > 0 && (Date.now() < lastUpdated + 5 * 60 * 1000 || updating)) {
       return200(res, localPairs);
     }
 
