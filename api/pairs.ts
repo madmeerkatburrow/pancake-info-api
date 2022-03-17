@@ -20,11 +20,21 @@ interface ReturnShape {
   };
 }
 
+const lastUpdated = Date.now();
+let localPairs = {};
+
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
   try {
+
+    if (
+      Date.now() < lastUpdated + 3 * 60 * 1000 
+    ) {
+      return200(res, localPairs);
+    }
+
     const topPairs = await getTopPairs();
 
-    const pairs = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
+    localPairs = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
       const pId = getAddress(pair.id);
       const t0Id = getAddress(pair.token0.id);
       const t1Id = getAddress(pair.token1.id);
@@ -47,7 +57,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       return accumulator;
     }, {});
 
-    return200(res, { updated_at: new Date().getTime(), data: pairs });
+    return200(res, { updated_at: new Date().getTime(), data: localPairs });
   } catch (error) {
     return500(res, <Error>error);
   }
