@@ -13,7 +13,7 @@ interface ReturnShape {
   };
 }
 
-const lastUpdated = Date.now();
+let lastUpdated = Date.now();
 let updating = false
 let localPairs = {};
 export default async function (req: VercelRequest, res: VercelResponse): Promise<void> {
@@ -41,6 +41,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
     }, {});
 
     updating = false;
+    lastUpdated = Date.now()
 
     return200(res, { updated_at: new Date().getTime(), data: localPairs });
   } catch (error) {
