@@ -29,6 +29,11 @@ const METF_BURNED = [
   "0xe25737b093626233877ec0777755c5c4081580be",
   "0x000000000000000000000000000000000000dead",
 ];
+const MAD_BURNED = [
+  "0x5AF4DC6fbB8489aB14DdE6d901dE3FBdC4d078f6",
+  "0x212331e1435A8df230715dB4C02B2a3A0abF8c61",
+  "0xe551719c883d1e2e956d88b02b522bc508c0020c"
+]
 
 const allTokens: { [token: string]: any } = {
   MMF: {
@@ -66,6 +71,13 @@ const allTokens: { [token: string]: any } = {
     burned: METF_BURNED,
     decimals: new BigNumber(10).pow(18),
   },
+  MAD: {
+    name: "MAD",
+    address: "0x212331e1435A8df230715dB4C02B2a3A0abF8c61",
+    contract: new ethers.Contract("0x212331e1435A8df230715dB4C02B2a3A0abF8c61", erc20, provider),
+    burned: MAD_BURNED,
+    decimals: new BigNumber(10).pow(18),
+  },
 };
 
 const priceData: { [token: string]: any } = {
@@ -90,6 +102,11 @@ const priceData: { [token: string]: any } = {
     lastUpdated: Date.now(),
   },
   METF: {
+    totalSupply: "",
+    burned: "",
+    lastUpdated: Date.now(),
+  },
+  MAD: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
