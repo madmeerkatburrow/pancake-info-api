@@ -5,7 +5,7 @@ import erc20 from "../erc20";
 import BigNumber from "bignumber.js";
 
 const provider = new providers.StaticJsonRpcProvider("https://mmf.nebkas.ro");
-const providerPoly = new providers.StaticJsonRpcProvider("https://polygon-rpc.com	");
+const providerPoly = new providers.StaticJsonRpcProvider("https://polygon-rpc.com");
 
 const MMF_BURNED = [
   "0x61c20e2e1ded20856754321d585f7ad28e4d6b27",
