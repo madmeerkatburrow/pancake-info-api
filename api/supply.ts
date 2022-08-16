@@ -5,6 +5,7 @@ import erc20 from "../erc20";
 import BigNumber from "bignumber.js";
 
 const provider = new providers.StaticJsonRpcProvider("https://mmf.nebkas.ro");
+const providerPoly = new providers.StaticJsonRpcProvider("https://polygon-rpc.com");
 
 const MMF_BURNED = [
   "0x61c20e2e1ded20856754321d585f7ad28e4d6b27",
@@ -34,6 +35,10 @@ const MAD_BURNED = [
   "0x212331e1435A8df230715dB4C02B2a3A0abF8c61",
   "0xe551719c883d1e2e956d88b02b522bc508c0020c"
 ]
+const pMMF_BURNED = [
+  "0x61c20e2e1ded20856754321d585f7ad28e4d6b27",
+  "0x0f7Efb2e96B9681950f96D3D18ce0BF68d60fD7e",
+];
 
 const allTokens: { [token: string]: any } = {
   MMF: {
@@ -78,6 +83,14 @@ const allTokens: { [token: string]: any } = {
     burned: MAD_BURNED,
     decimals: new BigNumber(10).pow(18),
   },
+  // Polygon
+  pMMF: {
+    name: "MMF",
+    address: "0x22a31bD4cB694433B6de19e0aCC2899E553e9481",
+    contract: new ethers.Contract("0x22a31bD4cB694433B6de19e0aCC2899E553e9481", erc20, providerPoly),
+    burned: pMMF_BURNED,
+    decimals: new BigNumber(10).pow(18),
+  },
 };
 
 const priceData: { [token: string]: any } = {
@@ -85,31 +98,43 @@ const priceData: { [token: string]: any } = {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
   },
   MMO: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
   },
   SVN: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
   },
   MSHARE: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
   },
   METF: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
   },
   MAD: {
     totalSupply: "",
     burned: "",
     lastUpdated: Date.now(),
+    network: 'cronos'
+  },
+  pMMF: {
+    totalSupply: "",
+    burned: "",
+    lastUpdated: Date.now(),
+    network: 'polygon'
   },
 };
 
@@ -119,6 +144,10 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
 
     if (Date.now() < priceData[token].lastUpdated + 3 * 60 * 1000 && priceData[token].totalSupply) {
       return200(res, priceData[token]);
+    }
+
+    if (allTokens[token] === undefined) {
+      throw new Error("unknown token")
     }
 
     // Get total supply and substract the burned
@@ -136,6 +165,7 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
       totalSupply: totalSupply.minus(burned).div(allTokens[token].decimals).toString(),
       burned: burned.div(allTokens[token].decimals).toString(),
       lastUpdated: Date.now(),
+      network: priceData[token].network
     };
 
     priceData[token] = {
