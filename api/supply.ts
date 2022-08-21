@@ -38,6 +38,7 @@ const MAD_BURNED = [
 const pMMF_BURNED = [
   "0x61c20e2e1ded20856754321d585f7ad28e4d6b27",
   "0x0f7Efb2e96B9681950f96D3D18ce0BF68d60fD7e",
+  "0x000000000000000000000000000000000000dEaD"
 ];
 
 const allTokens: { [token: string]: any } = {
